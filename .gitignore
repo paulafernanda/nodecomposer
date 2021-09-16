@@ -1,0 +1,6 @@
+node_modules
+nginx
+!data/
+data/*
+!backup_db/
+backup_db/*

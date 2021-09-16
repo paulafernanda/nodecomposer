@@ -1,0 +1,20 @@
+{
+  "name": "reload",
+  "version": "1.0.0",
+  "description": "",
+  "main": "api.js",
+  "scripts": {
+    "test": "mocha --timeout 10000"
+  },
+  "keywords": [],
+  "author": "Paula Fernanda Schiavo Pereira",
+  "license": "ISC",
+  "dependencies": {
+    "axios": "^0.21.4",
+    "hapi": "^18.1.0",
+    "mysql2": "^2.3.0"
+  },
+  "devDependencies": {
+    "mocha": "^9.1.1"
+  }
+}
