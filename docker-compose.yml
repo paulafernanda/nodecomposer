@@ -21,6 +21,7 @@ services:
     container_name: ${COMPOSE_PROJECT_NAME}_${NODEJS_SERVER_NAME}_db
     image: mysql:5.7
     env_file: ./.env
+    command: --max_allowed_packet=1000000000
 
     environment:
       MYSQL_ROOT_PASSWORD: ${DB_ROOT_PASS}
@@ -30,6 +31,7 @@ services:
     volumes:
       - ${MYSQL_BACKUP_FOLDER}:/backup/
       - ${MYSQL_FOLDER}:/var/lib/mysql
+      - ./setup.sql:/docker-entrypoint-initdb.d/setup.sql
 
     networks:
       app_net:
