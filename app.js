@@ -1,26 +1,20 @@
-const Hapi = require('hapi')
+const restify = require('restify')
+const redis = require('redis')
 
-const ApiRoute = require(`./routes/apiRoutes`)
+const client = redis.createClient({
+    host: '172.16.250.12'
+});
 
-const app = new Hapi.Server({
-    port: 4040
+const server = restify.createServer({
+    name: 'project reload',
+    version: '1.0.0'
 })
 
-function mapRoutes(instance, methods){
-    return methods.map(method => instance[method]())
-}
-
-async function main(){
-    app.route(
-        mapRoutes(new ApiRoute(), ApiRoute.methods())
-    )
-
-    await app.start()
-    console.log(`Servidor rodando na porta `, app.info.port)
-
-    return app
-}
-
-module.exports = main()
+server.listen(3000, () =>{
+    console.log('Server Rodando na porta 3000')
+    require('./routes/company')(server, client)
+    require('./routes/desktop')(server, client)
+    require('./routes/contributors')(server)
+})
 
 
