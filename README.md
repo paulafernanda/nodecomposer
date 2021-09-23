@@ -14,6 +14,7 @@ Utilizei:
 <br>*) o redis para salvar os itens em cache
 
 Obs. 1) Não inclui o BloomFilter para fazer os filtros no Redis
+<br>
 Obs. 2) Não fiz o algoritmo para do método POST para buscar os dados da Company, Desktops e Contributors
 
 Importante:
