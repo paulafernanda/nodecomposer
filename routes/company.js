@@ -8,14 +8,14 @@ module.exports = (server, client) => {
 
             client.get('companies', (err, data) => {
                 if (err) {
-                    console.error(err);
-                    throw err;
-                  }
-            
-                  if (data) {
+                    console.error(err)
+                    throw err
+                }
+                  
+                if (data) {
                     console.log('Company retrieved from Redis');
                     resp.send(JSON.parse(data))
-                  } else {
+                } else {
                     knex('company')
                         .then(resultado => {
                             const empresa = JSON.stringify(resultado)
@@ -26,7 +26,7 @@ module.exports = (server, client) => {
                         .catch(error =>{
                             resp.json({ error: error.message })
                         })
-                  }
+                }
             })
         } catch (err) {
             resp.json({ error: err.message });
